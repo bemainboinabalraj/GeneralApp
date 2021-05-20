@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'zip generalartifactapp-2.zip *'
+                sh 'zip generalartifactapp-3.zip *'
             }
         }
         stage('Push to Jfrog Artifactory') {
