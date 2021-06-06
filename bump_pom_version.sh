@@ -23,6 +23,10 @@
         echo "Pushing changes to origin..."
         git push origin
  }
+ function generateartifactpfile() {
+	zip generalartifactapp-${NEXT_PROJECT_VERSION}.zip *
+ }
 bumpversion
 updatePomToNextVersion
 pushpomversionchanges
+generateartifactpfile
