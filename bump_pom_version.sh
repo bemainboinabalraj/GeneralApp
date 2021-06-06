@@ -24,7 +24,7 @@
         local COMMIT_MESSAGE="Auto commit from CI - incremented build number from [${CURRENT_VERSION}] to [${NEXT_PROJECT_VERSION}]."
         git commit -m "${COMMIT_MESSAGE}"
         echo "Pushing changes to origin..."
-        git push origin
+        git push origin HEAD:master --force
  }
  function generateartifactpfile() {
 	zip generalartifactapp-${NEXT_PROJECT_VERSION}.zip *
