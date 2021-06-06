@@ -3,19 +3,10 @@ pipeline {
 
     stages {
         
-        stage('Version Update'){
-            steps{
-                script{
-                    def PomVersion = sh script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout', returnStdout: true
-                    echo '${PomVersion}'
-                }
-                echo '${version}'
-            }
-        }
-        stage('Build') {
+        stage('Update Version & Build') {
             steps {
-                echo 'Building..'
-                sh 'zip generalartifactapp-3.zip *'
+                echo 'Trigerring POM Version update to next version'
+                sh './bump_pom_version.sh'
             }
         }
         stage('Push to Jfrog Artifactory') {
@@ -36,7 +27,6 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'sleep 20s'
             }
         }
         stage('Deploy') {
