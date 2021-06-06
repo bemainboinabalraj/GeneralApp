@@ -2,6 +2,15 @@ pipeline {
     agent any
 
     stages {
+        
+        stage('Version Update'){
+            steps{
+                script{
+                    def PomVersion = readMavenPom 'pom.xml'
+                    echo "${PomVersion.version}"
+                }
+            }
+        }
         stage('Build') {
             steps {
                 echo 'Building..'
