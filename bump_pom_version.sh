@@ -16,7 +16,10 @@
  function pushpomversionchanges() {
         echo "Preparing updated files for commit..."
         git status
-        git add .
+        for POM in `find . -name pom.xml` ; do
+    		git add ${POM}
+    		echo "   - ${POM}"
+  	done
         echo "Committing changes..."
         local COMMIT_MESSAGE="Auto commit from CI - incremented build number from [${CURRENT_VERSION}] to [${NEXT_PROJECT_VERSION}]."
         git commit -m "${COMMIT_MESSAGE}"
