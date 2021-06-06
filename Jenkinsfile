@@ -4,9 +4,11 @@ pipeline {
     stages {
         
         stage('Version Update'){
+            steps{
                 pom = readMavenPom file: 'pom.xml'
                 version = getVersion(pom)
                 echo '${version}'
+            }
         }
         stage('Build') {
             steps {
