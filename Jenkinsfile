@@ -6,8 +6,8 @@ pipeline {
         stage('Version Update'){
             steps{
                 script{
-                    def PomVersion = readMavenPom 'pom.xml'
-                    echo "${PomVersion.version}"
+                    def PomVersion = readMavenPom
+                    echo '${PomVersion.version}'
                 }
             }
         }
