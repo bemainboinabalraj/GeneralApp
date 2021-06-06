@@ -6,8 +6,8 @@ pipeline {
         stage('Version Update'){
             steps{
                 script{
-                    def PomVersion = readMavenPom()
-                    def version = PomVersion.version
+                    def PomVersion = sh script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout', returnStdout: true
+                    echo '${PomVersion}'
                 }
                 echo '${version}'
             }
