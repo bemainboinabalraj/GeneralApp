@@ -1,6 +1,10 @@
 name: Shared Action Test
 on: 
   workflow_dispatch:
+    inputs:
+      name:
+        default: 'Testing node install'
+        required: true
 jobs:
   test:
     strategy:
